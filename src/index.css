@@ -3,8 +3,26 @@
 :root {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  background-image: url("./assets/images/background-pattern-mobile.svg");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-white {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80vh;
+  border: #09ff00 2px solid;
+}
+.items-wrapper {
+  position: relative;
+  font-size: 5vw;
+  height: 100vh;
 }
