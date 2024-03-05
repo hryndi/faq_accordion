@@ -3,6 +3,9 @@
 // - View the optimal layout for the interface depending on their device's screen size
 // - See hover and focus states for all interactive elements on the page
 
+import background from "../assets/images/background-pattern-mobile.svg";
+import { useState } from "react";
+
 const DUMMY_DATA = [
   {
     question: "What is Frontend Mentor, and how will it help me?",
@@ -31,20 +34,37 @@ const DUMMY_DATA = [
 ];
 
 function App() {
+  const [toggledEl, setToggledEl] = useState(null);
+
+  function toggleedElHandler(id) {
+    if (id === toggledEl) {
+      setToggledEl(null);
+    } else {
+      setToggledEl(id);
+    }
+  }
   return (
     <>
-      <div className="background-white"></div>
-      <main>
-        <h1>FAQs</h1>
-        <div className="items-wrapper">
-          {DUMMY_DATA.map((item) => (
-            <div className={item.id}>
-              <h2>{item.question}</h2>
-              <p>{item.answer}</p>
-            </div>
-          ))}
+      <div className="container">
+        <div className="background-head">
+          <img src={background} alt="" />
         </div>
-      </main>
+        <main>
+          <div className="items-wrapper">
+            <h1>FAQs</h1>
+            {DUMMY_DATA.map((item) => (
+              <div className="items">
+                <h2 onClick={() => toggleedElHandler(item.id)}>{item.question}</h2>
+                {toggledEl === item.id && (
+                  <div className="item">
+                    <p>{item.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
     </>
   );
 }
