@@ -7,6 +7,7 @@ import background from "../assets/images/background-pattern-mobile.svg";
 import star from "../assets/images/icon-star.svg";
 import { useState } from "react";
 import plus from "../assets/images/icon-plus.svg";
+import minus from "../assets/images/icon-minus.svg";
 import deskBackground from "../assets/images/background-pattern-desktop.svg";
 const DUMMY_DATA = [
   {
@@ -59,9 +60,9 @@ function App() {
           <div className="ddd">
             {DUMMY_DATA.map((item) => (
               <div className="item-wrapper">
-                <div className="question-wrapper">
-                  <h2 onClick={() => displayItemHandler(item.id)}>{item.question}</h2>
-                  <img src={plus} alt="" />
+                <div onClick={() => displayItemHandler(item.id)} className="question-wrapper">
+                  <h2>{item.question}</h2>
+                  <img src={displayItem === item.id ? minus : plus} alt="" />
                 </div>
                 <div className="paragrapf">{displayItem === item.id && <p>{item.answer}</p>}</div>
                 <div className="underline"></div>
