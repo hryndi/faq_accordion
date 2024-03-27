@@ -4,13 +4,16 @@
 // - See hover and focus states for all interactive elements on the page
 
 import background from "../assets/images/background-pattern-mobile.svg";
+import star from "../assets/images/icon-star.svg";
 import { useState } from "react";
-
+import plus from "../assets/images/icon-plus.svg";
+import minus from "../assets/images/icon-minus.svg";
+import deskBackground from "../assets/images/background-pattern-desktop.svg";
 const DUMMY_DATA = [
   {
     question: "What is Frontend Mentor, and how will it help me?",
     answer:
-      "Frontend Mentor offers realistic coding challenges to help developers developers improve their frontend coding scills with projects in HTML,CSS and JavaScript. It`s suitable for all levels and ideal for portfoliobuilding.",
+      "Frontend Mentor offers realistic coding challenges to help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It`s suitable for all levels and ideal for portfoliobuilding.",
     id: "q1",
   },
   {
@@ -34,36 +37,39 @@ const DUMMY_DATA = [
 ];
 
 function App() {
-  const [toggledEl, setToggledEl] = useState(null);
+  const [displayItem, setDisplayItem] = useState(null);
 
-  function toggleedElHandler(id) {
-    if (id === toggledEl) {
-      setToggledEl(null);
+  function displayItemHandler(id) {
+    if (displayItem === id) {
+      setDisplayItem(null);
     } else {
-      setToggledEl(id);
+      setDisplayItem(id);
     }
   }
+
   return (
     <>
-      <div className="container">
-        <div className="background-head">
-          <img src={background} alt="" />
-        </div>
-        <main>
-          <div className="items-wrapper">
+      <div className="background-image">
+        <img src={background} alt="" />
+
+        <div className="card-wrapper">
+          <div className="header">
+            <img src={star} alt="" />
             <h1>FAQs</h1>
+          </div>
+          <div className="ddd">
             {DUMMY_DATA.map((item) => (
-              <div className="items">
-                <h2 onClick={() => toggleedElHandler(item.id)}>{item.question}</h2>
-                {toggledEl === item.id && (
-                  <div className="item">
-                    <p>{item.answer}</p>
-                  </div>
-                )}
+              <div className="item-wrapper">
+                <div onClick={() => displayItemHandler(item.id)} className="question-wrapper">
+                  <h2>{item.question}</h2>
+                  <img src={displayItem === item.id ? minus : plus} alt="" />
+                </div>
+                <div className="paragrapf">{displayItem === item.id && <p>{item.answer}</p>}</div>
+                <div className="underline"></div>
               </div>
             ))}
           </div>
-        </main>
+        </div>
       </div>
     </>
   );
