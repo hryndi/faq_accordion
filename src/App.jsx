@@ -50,11 +50,10 @@ function App() {
   return (
     <>
       <div className="background-image">
-        <img src={background} alt="" />
+        <img alt="" />
 
         <div className="card-wrapper">
           <div className="header">
-            <img src={star} alt="" />
             <h1>FAQs</h1>
           </div>
           <div className="ddd">
